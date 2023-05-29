@@ -3,25 +3,35 @@ package Homework1;
 import java.util.ArrayList;
 
 public class FamilyTree {
-    ArrayList<Human> family;
+    private ArrayList<Human> family;
 
-    public ArrayList<Human> getFamily() {
-        ArrayList<Human> familyArray = new ArrayList<>(family);
-        return familyArray;
+    public FamilyTree()
+    {
+        this.family = new ArrayList<>();
     }
 
     public void addFamilyMember(Human familyMember)
     {
-        for (Human mem : family)
+        if (family.contains(familyMember))
         {
-            if (familyMember.getName().equals(mem.getName()))
-            {
-                System.out.println("Такой пользователь уже есть в списке");
-                return;
-            }
+            System.out.println("Такой пользователь уже есть в списке");
         }
+        else
+        {
+            if (familyMember.getFather() != null)
+            {
+                Human father = familyMember.getFather();
+                father.addChild(familyMember);
+            }
 
-        family.add(familyMember);
-        System.out.println("Пользователь добавлен!");
+            if (familyMember.getMother() != null)
+            {
+                Human mother = familyMember.getMother();
+                mother.addChild(familyMember);
+            }
+
+            family.add(familyMember);
+            System.out.println("Родственник добавлен!");
+        }
     }
 }

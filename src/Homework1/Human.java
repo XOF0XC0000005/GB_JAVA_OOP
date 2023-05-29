@@ -10,22 +10,13 @@ public class Human {
     private Human mother;
     private ArrayList<Human> childrens;
 
-    public Human(String name, int age, Human father, Human mother, ArrayList<Human> childrens)
+    public Human(String name, int age, Human father, Human mother)
     {
         this.name = name;
         this.age = age;
         this.father = father;
         this.mother = mother;
-        this.childrens = childrens;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<Human> getChildrens() {
-        ArrayList<Human> parentChildrens = new ArrayList<>(childrens);
-        return parentChildrens;
+        this.childrens = new ArrayList<>();
     }
 
     public void showChildrens() {
@@ -40,16 +31,19 @@ public class Human {
         System.out.println();
     }
 
-    public void setFather(Human father) {
-        this.father = father;
+    public void addChild(Human child)
+    {
+        this.childrens.add(child);
     }
 
-    public void setMother(Human mother) {
-        this.mother = mother;
+    public Human getFather()
+    {
+        return this.father;
     }
 
-    public void setChildrens(ArrayList<Human> childrens) {
-        this.childrens = childrens;
+    public Human getMother()
+    {
+        return this.mother;
     }
 
     @Override
