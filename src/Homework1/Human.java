@@ -1,6 +1,5 @@
 package Homework1;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Human {
