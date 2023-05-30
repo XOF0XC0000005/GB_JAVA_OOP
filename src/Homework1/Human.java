@@ -1,8 +1,9 @@
 package Homework1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Human {
+public class Human implements Serializable {
     private String name;
     private int age;
     private Human father;
@@ -19,7 +20,6 @@ public class Human {
     }
 
     public void showChildrens() {
-        System.out.println("Parent: \n" + "Имя: " + name + "\nВозраст: " + age + "\n");
         System.out.println("Childrens: ");
 
         for (Human children : childrens)
@@ -45,8 +45,29 @@ public class Human {
         return this.mother;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return "Имя: " + name + "\nВозраст: " + age;
+        return "Имя: " + name + "\nВозраст: " + age + "\nОтец: \n" + father + "\nМама: \n" + mother;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+
+        if (!(obj instanceof Human))
+        {
+            return false;
+        }
+
+        Human human = (Human) obj;
+        return human.getName().equals((getName()));
     }
 }
