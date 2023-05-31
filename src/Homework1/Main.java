@@ -1,10 +1,9 @@
 package Homework1;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.Serializable;
 
 public class Main {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) {
         FamilyTree familyTree = new FamilyTree();
         Human firstHuman = new Human("Artem", 60, null, null);
         Human secondHuman = new Human("Margo", 62, null, null);
@@ -22,8 +21,8 @@ public class Main {
         familyTree.addFamilyMember(thirdHuman);
 
         FileHandler fileHandler = new FileHandler();
-        fileHandler.save("C:\\Users\\l.reva\\IdeaProjects\\Object_Oriented_Programming\\src\\Homework1", "savedTree", "txt", familyTree);
-        SavedObject loadedObject = fileHandler.load("C:\\Users\\l.reva\\IdeaProjects\\Object_Oriented_Programming\\src\\Homework1\\savedTree.txt", "FamilyTree");
+        fileHandler.save("C:\\Users\\l.reva\\IdeaProjects\\Object_Oriented_Programming\\src\\Homework1\\savedTree.txt", familyTree);
+        Serializable loadedObject = fileHandler.load("C:\\Users\\l.reva\\IdeaProjects\\Object_Oriented_Programming\\src\\Homework1\\savedTree.txt", "FamilyTree");
         FamilyTree loadedFamilyTree = (FamilyTree) loadedObject;
 
         if (loadedFamilyTree != null)

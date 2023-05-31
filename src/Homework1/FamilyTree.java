@@ -3,7 +3,7 @@ package Homework1;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class FamilyTree implements Serializable, SavedObject {
+public class FamilyTree implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private ArrayList<Human> family;
@@ -13,11 +13,11 @@ public class FamilyTree implements Serializable, SavedObject {
         this.family = new ArrayList<>();
     }
 
-    public void addFamilyMember(Human familyMember)
+    public boolean addFamilyMember(Human familyMember)
     {
         if (family.contains(familyMember))
         {
-            System.out.println("Такой пользователь уже есть в списке");
+            return false;
         }
         else
         {
@@ -34,7 +34,7 @@ public class FamilyTree implements Serializable, SavedObject {
             }
 
             family.add(familyMember);
-            System.out.println("Родственник добавлен!");
+            return true;
         }
     }
 

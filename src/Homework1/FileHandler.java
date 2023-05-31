@@ -2,28 +2,32 @@ package Homework1;
 
 import java.io.*;
 
-public class FileHandler {
-    public void save(String path, String fileName, String format, SavedObject savedTree) throws IOException {
+public class FileHandler implements  FileManipulation{
+    public boolean save(String path, Serializable savedTree) {
         if (savedTree == null)
         {
-            return;
+            return false;
         }
 
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(path + "\\" + fileName + "." + format);
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(savedTree);
             objectOutputStream.close();
-            System.out.println("Файл сохранен!");
+            return true;
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Проблема с сохранением файла!");
+            return false;
+        }
+        catch (IOException e)
+        {
+            return false;
         }
 
     }
 
-    public SavedObject load(String path, String type) throws IOException, ClassNotFoundException {
+    public Serializable load(String path, String type) {
         try {
             FileInputStream fileInputStream = new FileInputStream(path);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -31,16 +35,22 @@ public class FileHandler {
             if (type.equals("FamilyTree")) {
                 FamilyTree familyTree = (FamilyTree) objectInputStream.readObject();
                 objectInputStream.close();
-                System.out.println("Файл загружен!");
                 return familyTree;
             }
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Файл не найден!");
+            return null;
+        }
+        catch (IOException e)
+        {
+            return null;
+        }
+        catch (ClassNotFoundException e)
+        {
+            return null;
         }
 
-        System.out.println("Неудалось преобразовать!");
         return null;
     }
 }
