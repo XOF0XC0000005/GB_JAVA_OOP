@@ -1,6 +1,9 @@
 package Homework1;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,12 +28,39 @@ public class Main {
         Serializable loadedObject = fileHandler.load("C:\\Users\\l.reva\\IdeaProjects\\Object_Oriented_Programming\\src\\Homework1\\savedTree.txt", "FamilyTree");
         FamilyTree loadedFamilyTree = (FamilyTree) loadedObject;
 
+        Iterator<Human> iterator = loadedFamilyTree.iterator();
+
         if (loadedFamilyTree != null)
         {
-            for (Human relatives : loadedFamilyTree.getFamily())
+            ArrayList<Human> loadedFamily = loadedFamilyTree.getFamily();
+            for (Human hum : loadedFamily)
             {
-                System.out.println(relatives);
+                System.out.println(hum);
+                System.out.println();
             }
+
+            Collections.sort(loadedFamily);
+            System.out.println();
+            System.out.println();
+            System.out.println();
+
+            for (Human hum :
+                    loadedFamily) {
+                System.out.println(hum);
+                System.out.println();
+            }
+
+            System.out.println();
+            System.out.println();
+            System.out.println();
+
+            loadedFamily.sort(new ChildrensComparator());
+            for (Human hum :
+                    loadedFamily) {
+                System.out.println(hum);
+                System.out.println();
+            }
+
         }
     }
 }

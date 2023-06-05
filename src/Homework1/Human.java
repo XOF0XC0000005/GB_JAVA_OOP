@@ -3,7 +3,7 @@ package Homework1;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Human implements Serializable {
+public class Human implements Serializable, Comparable<Human> {
     private String name;
     private int age;
     private Human father;
@@ -49,6 +49,10 @@ public class Human implements Serializable {
         return name;
     }
 
+    public ArrayList<Human> getChildrens() {
+        return childrens;
+    }
+
     @Override
     public String toString() {
         return "Имя: " + name + "\nВозраст: " + age + "\nОтец: \n" + father + "\nМама: \n" + mother;
@@ -69,5 +73,10 @@ public class Human implements Serializable {
 
         Human human = (Human) obj;
         return human.getName().equals((getName()));
+    }
+
+    @Override
+    public int compareTo(Human o) {
+        return Integer.compare(this.age, o.age);
     }
 }
