@@ -2,16 +2,14 @@ package Homework1;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        FamilyTree familyTree = new FamilyTree();
+        FamilyTree<Human> familyTree = new FamilyTree<>();
         Human firstHuman = new Human("Artem", 60, null, null);
         Human secondHuman = new Human("Margo", 62, null, null);
         Human thirdHuman = new Human("Anya", 40, firstHuman, secondHuman);
-        Human fourthHuman = new Human("Dmitriy", 41,null, null);
+        Human fourthHuman = new Human("Dmitriy", 41, null, null);
         Human fivesHuman = new Human("Martin", 12, fourthHuman, thirdHuman);
         Human sixHuman = new Human("Karim", 10, fourthHuman, thirdHuman);
 
@@ -28,24 +26,19 @@ public class Main {
         Serializable loadedObject = fileHandler.load("C:\\Users\\l.reva\\IdeaProjects\\Object_Oriented_Programming\\src\\Homework1\\savedTree.txt", "FamilyTree");
         FamilyTree loadedFamilyTree = (FamilyTree) loadedObject;
 
-        Iterator<Human> iterator = loadedFamilyTree.iterator();
-
-        if (loadedFamilyTree != null)
-        {
+        if (loadedFamilyTree != null) {
             ArrayList<Human> loadedFamily = loadedFamilyTree.getFamily();
-            for (Human hum : loadedFamily)
-            {
+            for (Human hum : loadedFamily) {
                 System.out.println(hum);
                 System.out.println();
             }
 
-            Collections.sort(loadedFamily);
+            familyTree.sortByAge(loadedFamily);
             System.out.println();
             System.out.println();
             System.out.println();
 
-            for (Human hum :
-                    loadedFamily) {
+            for (Human hum : loadedFamily) {
                 System.out.println(hum);
                 System.out.println();
             }
@@ -54,13 +47,11 @@ public class Main {
             System.out.println();
             System.out.println();
 
-            loadedFamily.sort(new ChildrensComparator());
-            for (Human hum :
-                    loadedFamily) {
+            familyTree.sortByChildrensAmount(loadedFamily);
+            for (Human hum : loadedFamily) {
                 System.out.println(hum);
                 System.out.println();
             }
-
         }
     }
 }

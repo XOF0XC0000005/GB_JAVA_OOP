@@ -1,11 +1,12 @@
 package Homework1;
 
+import Homework1.interfaces.FileManipulation;
+
 import java.io.*;
 
-public class FileHandler implements  FileManipulation{
+public class FileHandler implements FileManipulation {
     public boolean save(String path, Serializable savedTree) {
-        if (savedTree == null)
-        {
+        if (savedTree == null) {
             return false;
         }
 
@@ -15,13 +16,9 @@ public class FileHandler implements  FileManipulation{
             objectOutputStream.writeObject(savedTree);
             objectOutputStream.close();
             return true;
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             return false;
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             return false;
         }
 
@@ -37,17 +34,11 @@ public class FileHandler implements  FileManipulation{
                 objectInputStream.close();
                 return familyTree;
             }
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             return null;
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             return null;
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             return null;
         }
 
