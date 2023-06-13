@@ -1,6 +1,4 @@
-package Homework1.iterators;
-
-import Homework1.interfaces.FamilyTreeItem;
+package Homework1.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;

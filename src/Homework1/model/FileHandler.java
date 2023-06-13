@@ -1,6 +1,4 @@
-package Homework1;
-
-import Homework1.interfaces.FileManipulation;
+package Homework1.model;
 
 import java.io.*;
 

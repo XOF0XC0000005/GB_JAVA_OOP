@@ -1,20 +1,20 @@
-package Homework1;
-
-import Homework1.interfaces.FamilyTreeItem;
+package Homework1.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Human implements Serializable, Comparable<Human>, FamilyTreeItem {
     private String name;
+    private String sex;
     private int age;
     private Human father;
     private Human mother;
     private ArrayList<Human> childrens;
 
-    public Human(String name, int age, Human father, Human mother) {
+    public Human(String name, String sex, int age, Human father, Human mother) {
         this.name = name;
         this.age = age;
+        this.sex = sex;
         this.father = father;
         this.mother = mother;
         this.childrens = new ArrayList<>();
@@ -49,6 +49,10 @@ public class Human implements Serializable, Comparable<Human>, FamilyTreeItem {
 
     public int getAge() {
         return age;
+    }
+
+    public String getSex() {
+        return sex;
     }
 
     public ArrayList<Human> getChildrens() {

@@ -1,6 +1,4 @@
-package Homework1.interfaces;
-
-import Homework1.Human;
+package Homework1.model;
 
 import java.util.ArrayList;
 
@@ -16,4 +14,6 @@ public interface FamilyTreeItem {
     int getAge();
 
     ArrayList<Human> getChildrens();
+
+    String getSex();
 }

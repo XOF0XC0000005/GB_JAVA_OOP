@@ -1,15 +1,10 @@
-package Homework1;
-
-import Homework1.comparators.AgeComparator;
-import Homework1.comparators.ChildrensComparator;
-import Homework1.interfaces.FamilyTreeItem;
-import Homework1.iterators.FamilyTreeIterator;
+package Homework1.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class FamilyTree<T extends FamilyTreeItem> implements Serializable, Iterable<Human> {
+public class FamilyTree<T extends FamilyTreeItem> implements Serializable, Iterable<Human>, Service {
 
     private static final long serialVersionUID = 1L;
     private ArrayList<T> family;
@@ -47,6 +42,30 @@ public class FamilyTree<T extends FamilyTreeItem> implements Serializable, Itera
 
     public void sortByAge(ArrayList<T> collection) {
         collection.sort(new AgeComparator<>());
+    }
+
+    public ArrayList<T> getMales() {
+        ArrayList<T> males = new ArrayList<T>();
+
+        for (T hum : this.family) {
+            if (hum.getSex().equals("male")) {
+                males.add(hum);
+            }
+        }
+
+        return males;
+    }
+
+    public ArrayList<T> getFemales() {
+        ArrayList<T> female = new ArrayList<T>();
+
+        for (T hum : this.family) {
+            if (hum.getSex().equals("female")) {
+                female.add(hum);
+            }
+        }
+
+        return female;
     }
 
     @Override

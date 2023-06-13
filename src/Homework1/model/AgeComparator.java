@@ -1,6 +1,4 @@
-package Homework1.comparators;
-
-import Homework1.interfaces.FamilyTreeItem;
+package Homework1.model;
 
 import java.util.Comparator;
 

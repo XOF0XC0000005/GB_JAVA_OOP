@@ -1,4 +1,4 @@
-package Homework1.interfaces;
+package Homework1.model;
 
 import java.io.Serializable;
 
