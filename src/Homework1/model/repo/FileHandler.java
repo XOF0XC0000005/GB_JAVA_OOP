@@ -1,4 +1,7 @@
-package Homework1.model;
+package Homework1.model.repo;
+
+import Homework1.model.FamilyTree;
+import Homework1.model.repo.FileManipulation;
 
 import java.io.*;
 

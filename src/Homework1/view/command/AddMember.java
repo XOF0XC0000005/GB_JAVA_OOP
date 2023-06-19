@@ -17,6 +17,6 @@ public class AddMember implements Command {
 
     @Override
     public void execute() {
-        consoleUI.addMember();
+        consoleUI.addNewMember();
     }
 }

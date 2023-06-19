@@ -64,6 +64,11 @@ public class Human implements Serializable, Comparable<Human>, FamilyTreeItem {
         return "Имя: " + name + "\nВозраст: " + age + "\nОтец: \n" + father + "\nМама: \n" + mother;
     }
 
+    public String getShortDescription()
+    {
+        return  "Имя: " + name + "\nВозраст: " + age + "\nОтец: \n" + father + "\nМама: \n" + mother;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

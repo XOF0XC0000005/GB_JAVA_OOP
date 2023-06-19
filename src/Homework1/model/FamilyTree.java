@@ -3,8 +3,10 @@ package Homework1.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class FamilyTree<T extends FamilyTreeItem> implements Serializable, Iterable<Human>, Service {
+public class FamilyTree<T extends FamilyTreeItem> implements Serializable, Iterable<Human> {
 
     private static final long serialVersionUID = 1L;
     private ArrayList<T> family;
@@ -32,22 +34,22 @@ public class FamilyTree<T extends FamilyTreeItem> implements Serializable, Itera
         }
     }
 
-    public ArrayList<T> getFamily() {
-        return family;
+    public T getMaleMember(int index) {
+        ArrayList<T> males = getMales();
+
+        return males.get(index - 1);
     }
 
-    public void sortByChildrensAmount(ArrayList<T> collection) {
-        collection.sort(new ChildrensComparator<>());
+    public T getFemaleMember(int index) {
+        ArrayList<T> females = getFemales();
+
+        return females.get(index - 1);
     }
 
-    public void sortByAge(ArrayList<T> collection) {
-        collection.sort(new AgeComparator<>());
-    }
+    public ArrayList getMales() {
+        ArrayList males = new ArrayList<Human>();
 
-    public ArrayList<T> getMales() {
-        ArrayList<T> males = new ArrayList<T>();
-
-        for (T hum : this.family) {
+        for (T hum : family) {
             if (hum.getSex().equals("male")) {
                 males.add(hum);
             }
@@ -56,16 +58,20 @@ public class FamilyTree<T extends FamilyTreeItem> implements Serializable, Itera
         return males;
     }
 
-    public ArrayList<T> getFemales() {
-        ArrayList<T> female = new ArrayList<T>();
+    public ArrayList getFemales() {
+        ArrayList females = new ArrayList();
 
-        for (T hum : this.family) {
+        for (T hum : family) {
             if (hum.getSex().equals("female")) {
-                female.add(hum);
+                females.add(hum);
             }
         }
+        return females;
+    }
 
-        return female;
+    public List<T> getMembers(Predicate predicate)
+    {
+        return family.stream().filter(predicate::isEqual).collect(Collectors.toList());
     }
 
     @Override

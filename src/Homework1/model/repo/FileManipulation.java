@@ -1,4 +1,4 @@
-package Homework1.model;
+package Homework1.model.repo;
 
 import java.io.Serializable;
 
